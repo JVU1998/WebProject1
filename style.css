@@ -10,7 +10,9 @@ body {
     width: 100%;
     height:100%;
     background-image: url(./assets/background.jpeg);
-    overflow: scroll;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
 }
 
 img{
@@ -27,6 +29,7 @@ form *{
     letter-spacing: 0.5px;
     outline: none;
     border: none;
+    display: flex;
 }
 
 form h3 {
@@ -158,4 +161,9 @@ fieldset {
   text-decoration: none;
 }
 
-
+.grid-question-container
+{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
