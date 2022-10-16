@@ -1,20 +1,19 @@
 <?php
 	$fh = file("questions.txt");
-	$num = rand(1,count($fh));
-	$index = 0;
-	while ($index != count($fh)) {
-		$piece = explode(",", $fh[$num-1]);
+	$questionIndex = $_POST["qIndex"] ?? 0;
+	$maxQuestion = 20;
+	$curQuestion = rand(1,count($fh));
 
-		if ($piece[0] == $num) {
-			$question = $piece[1];
-			$a = $piece[2];
-			$b = $piece[3];
-			$c = $piece[4];
-			$d = $piece[5];
-			$correct = $piece[6];
-		}
-		$index++;
-	}
+	$curQuestionArr = explode(",", $fh[$curQuestion-1]);
+
+	$question = array(
+		'question'=> $curQuestionArr[1],
+		'a'=> $curQuestionArr[2],
+		'b'=> $curQuestionArr[3],
+		'c'=> $curQuestionArr[4],
+		'd'=> $curQuestionArr[5],
+		'answer'=> $curQuestionArr[6]
+	);
 ?>
 
 <!DOCTYPE html>
@@ -26,21 +25,32 @@
 	<link href="style.css" type="text/css" rel="stylesheet" />
 </head>
 
-<body>
-	<form action="<?php $_PHP_SELF ?>" method="POST">
-		<p><?= $question  ?></p>
+<body class="game-container">
+	<?php if($questionIndex == $maxQuestion) { include('win-screen.php'); } else { ?>
+	<form action="game-submit.php" method="POST">
+		<h4><?= $question['question']  ?></h4>
 		<div class="grid-question-container">
-			<input id="field_1" class="grid-item" name="Button" value="<?= $a ?>" />
-			<input id="field_2" class="grid-item" name="Button" value="<?= $b ?>" />
-			<input id="field_3" class="grid-item" name="Button" value="<?= $c ?>" />
-			<input id="field_4" class="grid-item" name="Button" value="<?= $d ?>" />
+			<div class="grid-item">
+				<input id="field_1" name="answer" type="radio" value="A" />
+				<label for="field_1"><?= $question['a'] ?></label>
+			</div>
+			<div class="grid-item">
+				<input id="field_2" name="answer" type="radio" value="B" />
+				<label for="field_2"><?= $question['b'] ?></label>
+			</div>
+			<div class="grid-item">
+				<input id="field_3" name="answer" type="radio" value="C" />
+				<label for="field_3"><?= $question['c'] ?></label>
+			</div>
+			<div class="grid-item">
+				<input id="field_4" name="answer" type="radio" value="D" />
+				<label for="field_4"><?= $question['d'] ?></label>
+			</div>
 		</div>
-		<input type="submit" />
-		<?php 
-			if (isset($_POST['Button']) && $_POST['Button'] == $correct) {
-				echo "Answer correct";
-			}	
-		?>
+		<input type="hidden" name="qIndex" value="<?= $questionIndex ?>">
+		<input type="hidden" name="curQuestion" value="<?= $curQuestion ?>">
+		<button class="game-submit-btn" type="submit">Submit</button>
+		<?php } ?>
 	</form>
 </body>
 
