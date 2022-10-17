@@ -1,7 +1,7 @@
 <?php
 	$fh = file("questions.txt");
 	$questionIndex = $_POST["qIndex"] ?? 0;
-	$maxQuestion = 20;
+	$maxQuestion = 10;
 	$curQuestion = rand(1,count($fh));
 
 	$curQuestionArr = explode(",", $fh[$curQuestion-1]);
@@ -23,9 +23,11 @@
 	<meta charset="utf-8">
 	<title>WHO WANTS TO BE A MILLIONAIRE?</title>
 	<link href="style.css" type="text/css" rel="stylesheet" />
+	<a href="main.php" ><button class="button" >Logout</button></a>
 </head>
 
 <body class="game-container">
+<img src="./assets/logo.jpg"/>
 	<?php if($questionIndex == $maxQuestion) { include('win-screen.php'); } else { ?>
 	<form action="game-submit.php" method="POST">
 		<h4><?= $question['question']  ?></h4>
@@ -49,7 +51,8 @@
 		</div>
 		<input type="hidden" name="qIndex" value="<?= $questionIndex ?>">
 		<input type="hidden" name="curQuestion" value="<?= $curQuestion ?>">
-		<button class="game-submit-btn" type="submit">Submit</button>
+		<button class="game-submit-btn" type="submit">Final Answer</button>
+
 		<?php } ?>
 	</form>
 </body>

@@ -26,6 +26,7 @@
         <link href="style.css" type="text/css" rel="stylesheet" />
     </head>
     <body class="game-container">
+    <img style="center" src="./assets/logo.jpg"/>
         <?php if(!isset($_POST['answer'])) { 
             include('game-over.php');
         } else { ?>
@@ -34,23 +35,24 @@
                 <div class="grid-question-container">
                     <div class="grid-item <?= strcmp($_POST['answer'],'A') ? '' : (getCorrectAnswer($question['answer']) ? 'correct-answer' : 'wrong-answer')?>">
                         <input id="field_1" name="Button" type="radio" value="A"/>
-                        <label for="field_1"><span class="list-label">A. </span><?= $question['a'] ?></label>
+                        <label for="field_1"><span class="list-label"> </span><?= $question['a'] ?></label>
                     </div>
                     <div class="grid-item <?= strcmp($_POST['answer'],'B') ? '' : (getCorrectAnswer($question['answer']) ? 'correct-answer' : 'wrong-answer')?>">
                         <input id="field_2" name="Button" type="radio" value="B"/>
-                        <label for="field_2"><span class="list-label">B. </span><?= $question['b'] ?></label>
+                        <label for="field_2"><span class="list-label"> </span><?= $question['b'] ?></label>
                     </div>
                     <div class="grid-item <?= strcmp($_POST['answer'],'C') ? '' : (getCorrectAnswer($question['answer']) ? 'correct-answer' : 'wrong-answer')?>">
                         <input id="field_3" name="Button" type="radio" value="C"/>
-                        <label for="field_3"><span class="list-label">C. </span><?= $question['c'] ?></label>
+                        <label for="field_3"><span class="list-label"> </span><?= $question['c'] ?></label>
                     </div>
                     <div class="grid-item <?= strcmp($_POST['answer'],'D') ? '' : (getCorrectAnswer($question['answer']) ? 'correct-answer' : 'wrong-answer')?>">
                         <input id="field_4" name="Button" type="radio" value="D"/>
-                        <label for="field_4"><span class="list-label">D. </span><?= $question['d'] ?></label>
+                        <label for="field_4"><span class="list-label"> </span><?= $question['d'] ?></label>
                     </div>
                 </div>
                 <input type="hidden" name="qIndex" value="<?= ++$_POST['qIndex'] ?>">
                 <?php if(getCorrectAnswer($question['answer'])) { ?>
+                    <h1> Correct!</h1>
                     <button class="game-submit-btn" type="submit">Next</button>
                 </form>
                 <?php } else {?>
