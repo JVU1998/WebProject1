@@ -58,7 +58,8 @@
                 <?php } else {?>
                 </form>
                     <form action="index.php" method="GET">
-                        <button class="game-submit-btn" type="submit">Game Over</button>
+                    <h2> Game Over! </h2>
+                        <button class="button" type="submit">Logout</button>
                     </form>
                 <?php } ?>
         <?php } ?>

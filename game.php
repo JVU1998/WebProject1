@@ -2,9 +2,12 @@
 	$fh = file("questions.txt");
 	$questionIndex = $_POST["qIndex"] ?? 0;
 	$maxQuestion = 10;
-	$curQuestion = rand(1,count($fh));
+	$curQuestion = rand($questionIndex*2+1,$questionIndex*2+2);
 
+	
 	$curQuestionArr = explode(",", $fh[$curQuestion-1]);
+
+	// echo(($questionIndex*2+1)." ".($questionIndex*2+2)." - ".$curQuestionArr[0]);
 
 	$question = array(
 		'question'=> $curQuestionArr[1],

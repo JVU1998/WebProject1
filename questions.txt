@@ -2,7 +2,7 @@
 2,What is the only food that has no expiration date?,A. Rice,B. vinegar,C. Sawabi,D. Honey,D
 3,English is most closely related to what language?,A. Chinese,B. Italian ,C. Spanish,D. German,D
 4,What country is sushi from?,A. China,B. Korea,C. Vienam,D. Japan,D
-5,What is the official language of the United States of America?,A. English,B. Spnaish,C. Vietnamese,D. None,D
+5,What is the official language of the United States of America?,A. English,B. Spanish,C. Vietnamese,D. None,D
 6,How many stars are there on the American flag?,A. 49,B. 55,C. 51,D. 50,D
 7,What country gave the Statue of Liberty to the United States?,A. China,B. UK,C. Mexico,D. France,D
 8,In the Disney movie Finding Nemo what type of fish is Nemo?,A. clownfish,B. Shark,C. Dophin,D. goldfish,A
