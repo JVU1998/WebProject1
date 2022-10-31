@@ -55,7 +55,16 @@
                     <h1> Correct!</h1>
                     <button class="game-submit-btn" type="submit">Next</button>
                 </form>
-                <?php } else {?>
+                <?php } else {
+            session_start();
+            $filename = 'score-info.txt';
+            $myfile = fopen($filename, "a") or die("ERROR! Unable to open file!");
+            $info = $_SESSION["username"].";".$_SESSION['score'].";"."\n";
+            fwrite($myfile, $info);            
+            fclose($myfile);   
+
+                    
+                    ?>
                 </form>
                     <form action="index.php" method="GET">
                     <h2> Game Over! </h2>

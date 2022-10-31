@@ -1,25 +1,43 @@
 
+<html lang="en">
+<head>
+    <title>WHO WANTS TO BE A MILLIONAIRE?</title>
+    <link href="style.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+
+    <h1>WHO WANTS TO BE A MILLIONAIRE?</h1>
+    <img src="./assets/logo.jpg"/>
+    <br>
+    </body>
+</html>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<title>WHO WANTS TO BE A MILLIONAIRE?</title>
-	<link href="style.css" type="text/css" rel="stylesheet" />
-	
+    <title>Who wants to be a millionaire</title>
+    <link href="main.css" type="text/css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 </head>
-<body></body>
 
-<form action="index.php">
-    <div class="grid-question-container game-over">
-	<h2>LeaderBoard</h2>
+<body>
+
+  
+
+    <main>
+        <h2>LeaderBoard</h2>
         <table class="game-container">
             <tr class="head">
                 <th>Player Name</th>
                 <th>Total Score</th>
             </tr>
 
-            <?php
+            
+
+
+<?php
     if ($file = fopen("score-info.txt", "r")) {
         $array = array();
         while(!feof($file)) {
@@ -46,8 +64,17 @@
         fclose($file);
     }
 ?>
-		</table>
-	<h2> Game Over! </h2>
-        <button class="button"  type="submit">Logout</button>
-    </div>
-</form>
+
+            
+
+        </table>
+
+        <div class="other-button">
+            <a href="index.php"><button class="button">Logout</button></a>
+        </div>
+    </main>
+
+  
+</body>
+
+</html>

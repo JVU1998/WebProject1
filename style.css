@@ -179,6 +179,17 @@ fieldset {
   align-items: center;
 }
 
+.game-container table {
+  border-collapse: collapse;
+  background: #34495e;
+  color: #f3f3f3;
+}
+
+.game-container td, th {
+  padding: 8px;
+  text-align: left;
+}
+
 .game-container h4{
   margin: auto;
   display: flex;

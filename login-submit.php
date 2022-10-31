@@ -16,15 +16,20 @@
     $user_pass = $_GET["password"];
     $check = 0;
 
+
     if ($file = fopen("user-info.txt", "r")) {
         while(!feof($file)) {
             $line = fgets($file);
             $user_info = explode(";", $line);
-?>
-<?php
-            if(strcmp($user_name, $user_info[0]) == 0 && strcmp($user_pass, $user_info[1]) == 0) {
-                $check = 1;
-?>
+
+                if (strcmp($user_name, $user_info[0]) == 0 && strcmp($user_pass, $user_info[1]) == 0) {
+                    session_start();
+                    $_SESSION['score'] = 0;
+                    $_SESSION['won'] = False;
+                    $_SESSION['username'] = $user_name;
+                    $check = 1;
+                ?>
+
                 <div class="main">
 <?php                    
                 echo "RULES: <BR> 
@@ -40,6 +45,7 @@
                 <br>
                 <br>
                 <a href="main.php"><button class="button" >Logout</button></a>
+                <a href="leaderboard.php"><button class="button">LeaderBoard</button></a>
 <?php
             }
         }

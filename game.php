@@ -3,20 +3,30 @@
 	$questionIndex = $_POST["qIndex"] ?? 0;
 	$maxQuestion = 10;
 	$curQuestion = rand($questionIndex*2+1,$questionIndex*2+2);
+	session_start();
 
+	$_SESSION['score'] = $questionIndex;
 	
-	$curQuestionArr = explode(",", $fh[$curQuestion-1]);
+	if($questionIndex < 10) {
+		$curQuestionArr = explode(",", $fh[$curQuestion-1]);
 
-	// echo(($questionIndex*2+1)." ".($questionIndex*2+2)." - ".$curQuestionArr[0]);
-
-	$question = array(
-		'question'=> $curQuestionArr[1],
-		'a'=> $curQuestionArr[2],
-		'b'=> $curQuestionArr[3],
-		'c'=> $curQuestionArr[4],
-		'd'=> $curQuestionArr[5],
-		'answer'=> $curQuestionArr[6]
-	);
+		$question = array(
+			'question'=> $curQuestionArr[1],
+			'a'=> $curQuestionArr[2],
+			'b'=> $curQuestionArr[3],
+			'c'=> $curQuestionArr[4],
+			'd'=> $curQuestionArr[5],
+			'answer'=> $curQuestionArr[6]
+		);
+	} else {
+		$filename = 'score-info.txt';
+        $myfile = fopen($filename, "a") or die("ERROR! Unable to open file!");
+		$info = $_SESSION["username"].";".$_SESSION['score'].";"."\n";
+        
+        fwrite($myfile, $info);
+        
+        fclose($myfile);         
+	}
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +41,7 @@
 
 <body class="game-container">
 <img src="./assets/logo.jpg"/>
-	<?php if($questionIndex == $maxQuestion) { include('win-screen.php'); } else { ?>
+	<?php if($questionIndex == $maxQuestion) { include('game-over.php'); } else { ?>
 	<form action="game-submit.php" method="POST">
 		<h4><?= $question['question']  ?></h4>
 		<div class="grid-question-container">
